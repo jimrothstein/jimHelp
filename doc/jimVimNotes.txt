@@ -2,6 +2,21 @@ jimVimNotes.txt                                       25  SEP 2021
 
 DO NOT DELETE
 
+===============================================================================
+CONTENTS
+
+	1. Reloading your vim configuration.....................|myhelp-config-reload|
+	2. Hotkeys....................................................|myhelp-hotkeys|
+	3. Searching................................................|myhelp-searching|
+	4. This cheatsheet.........................................|myhelp-cheatsheet|
+        5. Split Window...........................................|jim_split|
+
+===============================================================================
+1. Reloading your vim configuration                       *myhelp-config-reload*
+
+   - :so % : Reloads your vim configuration while editing.
+
+===============================================================================
 
 ====
 USAGE:     :h jimVimNotes  " Opens this file as read-only HELP file
@@ -28,6 +43,8 @@ restart vim
 Tags in this file:
 |jimVert|
 |jim_vim_help|
+|jim_common_tasks|
+|jim_system_stuff|
 
 To remove highlighting:   set syntax=off
 
@@ -38,7 +55,21 @@ Following sets things up:
 * start R (should be bottom)
 * :vert h    (open help on right)
 
+:h windows.txt
+:h vert
+:h splitright
 
+
+:h new   " open new WINDOW
+:h enew  " new buffer, in current window
+
+*jim_system_stuff*
+:view $VIMRUNTIME
+:view $TEMPLATES
+
+*jim_auto_commands*
+:h autocmd
+:h au
 
 
 *jim_vim_help*
@@ -71,32 +102,12 @@ TODO: pandoc may think 2nd `%` is both relative directory and file name
   *  !pandoc % -f markdown -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o out/out.html 
 
 
-====  
- GITHUB:  *.md display nicely?  [ignores latex]
-====  
-
--H header  
--V or --variable  
---pdf-engine=xelatex  
-
-<!--    this is for knitr:: ONLY
-
---> 
-
-*pandoc*
-PANDOC EXAMPLES:  
-https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/  
-
-*markdown*
-MARKDOWN GUIDE:  
-https://www.markdownguide.org/basic-syntax/  
-
-
 
 
 [all docs files](~/docs/)
 [code files](~/code/)
 
+*jim_freq_help*
 **Help files**
 :h abbreviation
 
@@ -108,27 +119,14 @@ https://www.markdownguide.org/basic-syntax/
 :h usr_toc.txt
 
 
+
 :h startup
 :h cmdline 
 :h exe    (use cmd line to run normal cmds?)
 :h startinsert
 
 
-|pandoc|
-|markdown|
-
-
-`markdown`
-
-`markdown`
-
-|markdown|
-
-`jimVert`
-
-|jimVert|
-
-
+*jim_common_tasks*
 ####  Help for common tasks
 :h :abbreviate
 :h :augroup
@@ -138,5 +136,16 @@ https://www.markdownguide.org/basic-syntax/
 :h :command
 :h :file
 :h :filetype
+:h :messages
+:h :options  :h options.txt  :h :set
+
+:h :scriptnames
+
+
+*jim_split*
+:h :split
+:vert help    " open help in vertical split
+
+
 
 vim:tw=78:ts=8:ft=help:

@@ -1,0 +1,45 @@
+jim_xfce4_help.txt                                       25  SEP 2021
+
+DO NOT DELETE
+
+
+====
+*jim_xfce4_help*  (hot links point to here)
+USAGE:     :h jim_xfce4_help  " Opens this file as read-only HELP file
+
+HELPTAGS and Ctags are NOT related (do not confuse).
+
+For helptags:
+MUST use *.txt
+MUST put in /doc folder of a plugin, here:  jimHelp/
+
+To change file:  edit this file as regular file.
+Dislike Highighting?   :set syntax=off
+Add a tag:     surround new tag with * ; plus prose to describe tag
+Add a hotlink:   ONLY in same file (I think) surround new tag with |
+
+Run :helptags ALL to regenerate file called tags
+/doc file (singular) :  should see this .txt file and tags file
+
+restart vim
+:h jim_xfce4_help
+====
+
+Tags in this file:
+
+|jim_xfce4_help| (link) to tag at top
+
+To remove highlighting:   set syntax=off
+
+
+#### xfce4
+Shortcuts: https://docs.xfce.org/apps/terminal/start#keyboard_shortcuts
+HELP:   https://docs.xfce.org/apps/terminal/4.12/start
+
+Based on VTE Widget terminal (gnome uses)
+
+ALT-F10  toggle bet min/max (NOPE!)
+
+ALT-TAB  rotate through open windows?
+
+vim:tw=78:ts=8:ft=help:
