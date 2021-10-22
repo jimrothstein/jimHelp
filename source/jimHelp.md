@@ -25,9 +25,12 @@ as of \today:
   NOTE:   .tex uses a .sty which I do not have.  USE  knitr:: (with TinyTex
   to locate and install that .sty file)  
 
-```vimdoc       
-TODO: pandoc may think 2nd `%` is both relative directory and file name
+  fonts installed?  fc-list : family
+  (Oct 2021) Can not figure out how to use another font in pandoc:  mainfont:
+  is not working.
 
+
+```vimdoc       
 !pandoc % -f markdown -o %.pdf
 
 !pandoc % -f markdown  -t latex -H ../chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o ~/Downloads/print_and_delete/out.pdf
@@ -43,6 +46,8 @@ TODO: pandoc may think 2nd `%` is both relative directory and file name
 ## jim_HTML
 
   HTML [to produce HTML with pandoc, all latex is IGNORED.]  
+
+I do **not** know how to create fancy HTML files from knitr, pandoc.
 
  HTML is pain in ass and HUGE time waste.  Pandoc can handle markdown and
  small amounts of latex (math) b/c ppl have added filters or other widgets to
@@ -147,7 +152,8 @@ pandoc --metadata=project:${PROJECT} --lua-filter scripts/skip-blocks.lua --lua-
 
 # SOURCE md file
 
-SOURCE markdown file to_create_vimdoc is located in jimHelp/source
+The SOURCE markdown file is located in jimHelp/source.   Edit .md file; not
+the resulting .txt file.   Edit .md file; not the resulting .txt file
 
 # Resulting txt file.
 The resulting txt file will be located in jimHelp/doc
@@ -258,7 +264,9 @@ Following sets things up:
 
 
 *jim_common_tasks*
+
 ####  Help for common tasks
+
 :h :abbreviate
 :h :augroup
 :h :changes
@@ -289,10 +297,12 @@ as of \today:
   PDF   [ignores html, css; also ignores YAML header (pandoc & ::render()]
  ===  
 
+  *  Pandoc creates a .tex file (from .md source).   This .tex file is run
+      through engine (pdflatex, xelatex ....) to actually output the pdf.
+
   NOTE:   .tex uses a .sty which I do not have.  USE  knitr:: (with TinyTex
   to locate and install that .sty file)  
 
-TODO: pandoc may think 2nd `%` is both relative directory and file name
 
 !pandoc % -f markdown -o %.pdf
 
@@ -874,3 +884,199 @@ ALT-F10  toggle bet min/max (NOPE!)
 
 ALT-TAB  rotate through open windows?
 :
+
+#### ====================
+##  Sat  11 Sep 2021
+(N) !!date, insert date
+
+:resize -3 <CR>  " reduce size of window
+:vertical resize -3 <CR>
+
+
+
+#### $VIMRUNTIME (inside the image app)
+:!ls $VIMRUNTIME
+#### Windows, splits
+:h usr_07.txt
+:h usr_08.txt
+:h windows.txt
+:h CTRL-W    
+
+
+#### statusline  %m (modify?) %y (filetype) ...
+:h statusline
+:echo expand("%m")  
+:set statusline=%t
+:set statusline+=%{&ff}
+
+#### Ranges (in file)
+:h range
+:., 'a
+:., +2
+3 lines below to end - 5 lines
+:.+3, $-5
+
+#### insert mode
+:h insert.txt
+:h insert-index
+:h i_CTRL-R
+
+<C-R>% inserts file name:
+/home/jim/docs/misc_files/005_tech_notes.md
+
+<C-R>=system("ls")  inserts listing
+
+
+Insert in bulk:
+:i or :a  followed by . when done
+
+
+#### Registers
+:echo @a 
+:let @a="hello"
+
+
+#### Plugins
+:h Vimux
+:call VimuxRunCommand("ls")
+:VimuxPromptCommand<CR>
+
+To Close:
+:VimuxCloseRunner<CR>
+
+
+#### Syntax Highlighting
+:h usr_06.txt
+
+#### vim initialize
+:vert h nvim_R
+:tab help
+
+
+#### vim help
+:vert h nvim-R  " opens help to right
+:let R_nvimpager = "vertical" default, (can be "tab", "tabnew")
+
+
+#### vim tabs
+tabs   :tabn :tabp :tabnew
+
+READ: cmds to open windows at various localations:  bo, above ...
+
+
+:h reference_toc
+:h help
+:h help-summary
+:h cmd   (:h ls)
+:helpgrep fold*  (no quotes)
+
+"all tags
+:h quickref.txt 
+
+"index
+:h usr_toc.txt
+
+:h reference_toc
+:h local-additions
+
+:h motions.txt (jumps, motions, find next } etc)
+
+
+#### search
+    /foo/+1    find foo  and move +1 line down 
+/foo/0     find .... but move to beginning of line 
+/foo/e-1    find ... then move back 1 character.
+
+
+##  Thu  19 Nov 2020  Acer Batttery
+  *  ACER CB3-431-C7EX 
+  *  From back (tiny print on labels)
+    *  SNID   8120 1450072
+    *  SN NXGC7AA001812038A47200
+    *  ACER CB-431 Model N16P1
+Do you sell new battery for this ACER laptop?
+CB3-431-C7EX  (manuf 3/22/18)
+SNID:  81201450072
+
+## REST RESTful
+*	originally URL linked to file or webpage.
+*	more recenty, URI links to payload,  HTML/JSON/XML
+*	RESTFUL provides stateless operations, architecture (vs SOAP, or others)
+* VERBS include GET/POST/ etc etc
+Stateless means server keeps no session information.   Each call to server is
+independent.  Examples include HTTP, IP, REST.   But TCP is not stateless.
+
+### epub, Calibre, iPad, iCloud, eReader, pdf
+-	Claim:  iPad does not support Calibre; free Readers for iPad, everyone has fav.
+		No, no, no.    Download Calibre software for osx to iPad.   What  does not
+		work is connecting iPad to Calibre on Laptop.
+-	Goodreader for pdf ($20?) - many say best iPad reader.?
+- Marvin - no pdf support, but excellent otherwise?
+
+
+**knitr -> R & rmarkdown -> Bookdown (~2016) -> Blogdown -> netlify (Hugo, static)**
+HUGO:   md -> html
+BOOKDOWN:  Rmd        ->html (skips md)
+
+**lua** is a lightweight language acts like "glue" ; embeds within code; useful in
+textdoc .
+
+**renv** 	Why I think I do not need (and do not want).  Re-creates tidyverse code
+INSIDE each project, ie local copy of everything inside package.  Then takes
+snapshots as either your code or the any of like libraries changes.   Nice
+purpose:   easily re-create complete environment.   But much too much overhead
+for my needs!  (at this time.)
+
+#### X11
+-	XFCE - many distros, suite of apps, use GTK+ toolkit
+-	-	DESKTOP Mgr=Xfdesktop (colors, images, wallpaper)
+-	-	FILE Mgr=Thunar (GTK+ toolkit)
+		-	others: nautilus
+-	-	Windows mgr=xfwm4 (max, min, focus, tiling ...)
+-	-	Settings mgr=xfce4-settings-manager (appearance, style, keyboard, ....)
+-	-	Terminal=xfce4-terminal (1 of many possible emulators, code that sits
+	      inside bash?)
+-	DISPLAY MGR (DM) = Begins X, then displays (gui) login screen.  Many types
+	of DM.
+-	chroot  -   Without rebooting, chroot means "change root" ie start new
+	shell, change root diretory (to point to a partition)
+
+-	X uses(?) xlib (old), xcb(newer)
+-	ncurses lib -?
+-	Wayland - next generation (replace?) for X
+-	Stack - X at bottom, GNOME or KDE above, NAUTILUS or panels above
+-	man Xorg (good)	, I have no ~/.xinitrc
+-	Terminal is NOT equal to SHELL (explain?)
+- 	GTK+ - C lib, widgets supports X.   Gnone, Win32, etc use GTK+ tools.
+-	graphical login? kdm, gdm, xdm (basic) lightdm, sddm aka Display Mgr
+-	REMOVE PLUGIN:  vimwiki - how to get rid  | .vimrc - delete references to plugin
+##	13 OCT 2018
+-	Working: Ranger, newsbeut , updated to Ubuntu 18.04LTS
+-	TERMINALS
+	-	rxvt, urxvt, terminator, st (not friendly) xfce4-terminal.
+
+
+##  Fri  15 Oct 2021
+HOW DO ALLOCATE LEARNING TIME:
+
+There is an abundance of ways to learn all things R and related:  books, videos, post questions, read
+stack overflow,  `google` or just code.
+
+I am curious how you allocate your time between the various resources (consciously
+or unconsciously)
+
+I am not looking for any advice.  We all learn differently.   
+
+I'll start (again this is to LEARN): 
+
+40-50% of coding, ( often NOT productive. ) 
+
+20% books/videos ( usually very productive)
+20% stackoverflow | slack R4DS | blogs; ( mixed efficiency )
+10% googling; ( relatively low efficiency. ) 
+
+<5% posting questions (mixed)
+<1% Thinking, ( highly productive, but I am lazy )
+
+
+
