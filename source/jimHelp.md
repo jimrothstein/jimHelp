@@ -1,8 +1,29 @@
+```
+This is block with 3 back ticks: green!
+```
+```vimdoc
+This is block with 3 back ticks AND vimdoc:  boring!
+```
 
 ```vimdoc
-
 Patience !   Takes a few minutes to finish.
-!pandoc --metadata=project:JIM --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/jimHelp.txt
+shell 137 = out of memory
+
+SOURCE FILE:
+~/code/jimHelp/source/jimHelp.md for vimdoc
+
+CREATE:
+jimHelp.txt in ~/code/jimHelp/doc/
+
+PWD:
+MUST be ~/code/jimHelp/ 
+
+PANDOC:
+!pandoc --metadata=project:xxx --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/jimHelp.txt
+
+
+FINALLY, 
+:helptags ALL
 
 # ============================================
 PURPOSE:    Render .md, .txt. .R, .Rmd files
@@ -16,8 +37,9 @@ as of \today:
     *  I do not know how to embed latex, produce html or md (github flavor).  
 ```
 
-## jim_PDF                                                                    
+# PDF                                                                    
 
+```
  PDF   [ignores html, css; also ignores YAML header (pandoc & ::render()]
 
  To create pdf, just about everything works:  pandoc, markdown, latex, knitr..
@@ -28,7 +50,7 @@ as of \today:
   fonts installed?  fc-list : family
   (Oct 2021) Can not figure out how to use another font in pandoc:  mainfont:
   is not working.
-
+```
 
 ```vimdoc       
 !pandoc % -f markdown -o %.pdf
@@ -40,11 +62,11 @@ as of \today:
 !pandoc --metadata=project:JIM --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua  -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/source/jim_knitr_pandoc_latex.txt
 
 ```
-    
 
 
-## jim_HTML
+# HTML
 
+```
   HTML [to produce HTML with pandoc, all latex is IGNORED.]  
 
 I do **not** know how to create fancy HTML files from knitr, pandoc.
@@ -74,10 +96,12 @@ If lucky, !pandoc % -o file.pdf will work.
 **BEST**  print_me.sh *.txt file;  then use browser to print and save as .pdf
 *.R  - NOPE, Firefox chokes.
 
+```
 
 
-# writing_notes
 
+# VIM writing_notes
+```
 *jim_writing_notes1*
 
 Template for .md
@@ -106,95 +130,33 @@ setlocal noautoindent
 setlocal nocindent  
 setlocal nosmartindent  
 setlocal indentexpr=  
-
-
-# LUA
-```vimdoc
-!pandoc --metadata=project:JIM --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua  -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/jimlua.txt
 ```
 
-JIM's LUA help notes
-  
-
-
-*lua*
+# LUA
 
 In lua, nil or false evaluate to:  false
 0 or '', evaluate to: true
 
 
-*lua2*
-
-The contents of this cheatsheet should be stored at 
-`~/.config/nvim/plugged/vim-myhelp/doc/myhelp.txt`
-
-
-# lua3
-bottom
 
 
 
-#   To Create Vimdoc
 
-##  Level 2
 
-This is level 2, has 2 hash marks.
-
-### Level 3 
-
-This is level 3, has 3 hash marks.
-
-<!-- USAGE
-pandoc --metadata=project:${PROJECT} --lua-filter scripts/skip-blocks.lua --lua-filter scripts/include-files.lua -t scripts/panvimdoc.lua ${INPUT} -o ${OUTPUT}
-
-!pandoc --metadata=project:JIM --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/to_create_vimdoc.txt
--->
-
-# SOURCE md file
+# VIMDOC 
+## SOURCE md file
 
 The SOURCE markdown file is located in jimHelp/source.   Edit .md file; not
 the resulting .txt file.   Edit .md file; not the resulting .txt file
 
-# Resulting txt file.
+## Resulting txt file.
 The resulting txt file will be located in jimHelp/doc
-
-
-# Topic 1 
-As of 12 OCT, 2021;  run this pandoc you MUST be in directory:
-~/code/jimHelp/
-
-```vimdoc
-
-!pandoc --metadata=project:JIM --lua-filter doc/panvimdoc/scripts/skip-blocks.lua --lua-filter doc/panvimdoc/scripts/include-files.lua  -t doc/panvimdoc/scripts/panvimdoc.lua % -o doc/to_create_vimdoc.txt
-```
-
-````
-this is 4 backticks.
-````
-
-# Topic 2 
-
-To do:   topic 2 has no content.
-
 
 
 # Vim Notes
 
-1. Reloading your vim configuration                       *myhelp-config-reload*
-
-   - :so % : Reloads your vim configuration while editing.
-
-===============================================================================
-
-====
-USAGE:     :h jimVimNotes  " Opens this file as read-only HELP file
-
 
 HELPTAGS and Ctags are NOT related (do not confuse).
-
-For helptags:
-MUST use *.txt
-MUST put in /doc folder of a plugin, here:  jimHelp/
 
 To change file:  edit this file as regular file.
 Dislike Highighting?   :set syntax=off
@@ -204,25 +166,16 @@ Add a hotlink:   ONLY in same file (I think) surround new tag with |
 Run :helptags ALL to regenerate file called tags
 /doc file (singular) :  should see this .txt file and tags file
 
-restart vim
-:h jimVimNotes
-====
-
-Tags in this file:
-|jimVert|
-|jim_vim_help|
-|jim_common_tasks|
-|jim_system_stuff|
-
-To remove highlighting:   set syntax=off
-
-*jimVert*
 
 Following sets things up:
 * open .R file
 * start R (should be bottom)
 * :vert h    (open help on right)
 
+
+## VIM help 1
+
+```
 :h windows.txt
 :h vert
 :h splitright
@@ -244,26 +197,19 @@ Following sets things up:
 [all docs files](~/docs/)
 [code files](~/code/)
 
-*jim_freq_help*
-**Help files**
 :h abbreviation
-
-
 :h help-summary
 :h helphelp
 :h help.txt
 :h helpgrep
 :h usr_toc.txt
-
-
+:h index
 
 :h startup
 :h cmdline 
 :h exe    (use cmd line to run normal cmds?)
 :h startinsert
 
-
-*jim_common_tasks*
 
 ####  Help for common tasks
 
@@ -277,17 +223,140 @@ Following sets things up:
 :h :filetype
 :h :messages
 :h :options  :h options.txt  :h :set
+:h :omni
+:h :complete
+:h map-listing
 
 :h :scriptnames
+:h man  (use vim for manpages)
 
 
 *jim_split*
 :h :split
 :vert help    " open help in vertical split
 
+(N) !!date, insert date
+
+:resize -3 <CR>  " reduce size of window
+:vertical resize -3 <CR>
+
+$VIMRUNTIME (inside the image app)
+:!ls $VIMRUNTIME
+
+## Windows, splits
+:h usr_07.txt
+:h usr_08.txt
+:h windows.txt
+:h CTRL-W    
+
+
+## statusline  %m (modify?) %y (filetype) ...
+:h statusline
+:echo expand("%m")  
+:set statusline=%t
+:set statusline+=%{&ff}
+
+Ranges (in file)
+:h range
+:., 'a
+:., +2
+3 lines below to end - 5 lines
+:.+3, $-5
+
+## insert mode
+:h insert.txt
+:h insert-index
+:h i_CTRL-R
+
+<C-R>% inserts file name:
+/home/jim/docs/misc_files/005_tech_notes.md
+
+<C-R>=system("ls")  inserts listing
+
+
+Insert in bulk:
+:i or :a  followed by . when done
+
+
+## Registers
+:echo @a 
+:let @a="hello"
+
+
+## Plugins
+:h Vimux
+:call VimuxRunCommand("ls")
+:VimuxPromptCommand<CR>
+
+To Close:
+:VimuxCloseRunner<CR>
+
+
+## Syntax Highlighting
+:h usr_06.txt
+
+## vim initialize
+:vert h nvim_R
+:tab help
+
+
+## vim help 2
+:vert h nvim-R  " opens help to right
+:let R_nvimpager = "vertical" default, (can be "tab", "tabnew")
+
+
+## vim tabs
+tabs   :tabn :tabp :tabnew
+
+READ: cmds to open windows at various localations:  bo, above ...
+
+
+:h reference_toc
+:h help
+:h help-summary
+:h cmd   (:h ls)
+:helpgrep fold*  (no quotes)
+
+"all tags
+:h quickref.txt 
+
+"index
+:h usr_toc.txt
+
+:h reference_toc   (all *.txt files)
+:h local-additions (plugins)
+
+:h motions.txt (jumps, motions, find next } etc)
+
+
+## search
+    /foo/+1    find foo  and move +1 line down 
+/foo/0     find .... but move to beginning of line 
+/foo/e-1    find ... then move back 1 character.
+
+
+```
+
+## VIM HELP 3 (context)
+```vimdoc
+:h i_{}      (insert, delete, visual, ...)
+
+:h :ex_cmd
+
+:h 'option'
+
+:h func()
+
+:h /[     (escape regex character)
+
+:h ft-r-indent    (for plugin r)
+:h ft-json-....   (for plugin json)
+```
+
 
 # Pandoc Notes
 
+```
 as of \today:  
     *  To mix latex and .md, must go with pdf, either pandoc or knit  
     *  Add r, knitr code to YAML?   then must render as .RMD file
@@ -309,55 +378,26 @@ as of \today:
 !pandoc % -f markdown  -t latex -H ../chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o ~/Downloads/print_and_delete/out.pdf
 !pandoc % -f markdown  -t latex -H ../chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o out.pdf 
 !pandoc % -f markdown  --pdf-engine xelatex -H chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o ~/Downloads/print_and_delete/out.pdf
+```
 
-
+```
  ====  
   HTML [ignores latex]  
  ====    
 
   *  !pandoc % -f markdown -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o out/out.html 
 
+```
 
 # LINUX/ZSH notes
 
-
-
-To Jump to File Under Cursor
-# ============================
 gf   (goto file)
 
-#
-# USAGE:  :h jimLinux.txt   this file
-#         :h jimlua.txt
-#         :h jimhelp.txt
-#         :h generic_help.txt
-#         :h myhelp.txt (original plugin help)
-#         :h tags
-# 
 
 
+# ZSH
 
-
-STEP #1
-add/modify helpfile ....  ~/.config/nvim/vim-plug/vim-myhelp/doc/*.txt
-
-STEP #2 
-To a tag, put the tag between two asteriks
-
-STEP #3
-in `tags` file,  add ..
-
-STEP #4, finds all files in doc/ directory
 ```
-helpt ~/.config/nvim/vim-plug/vim-myhelp/
-```
-
-You can create a `tags` file that allows you to then type 
-`:h myhelp-cheatsheet` to quickly jump here. The command to do that is
-
-# ============
-#
-#
 *jim_Permissions*
 u g o   (user group other)
 
@@ -782,7 +822,10 @@ yank
 yank-pop
 zle-line-finish
 zle-line-init
+```
 
+## BINDKEY
+```
 *bindkey*  # results, all shortcuts
 
 "^A"-"^C" self-insert
@@ -836,45 +879,15 @@ zle-line-init
 "^\\\\"-"~" self-insert
 "^?" vi-backward-delete-char
 "\M-^@"-"\M-^?" self-insert
-# vim: filetype=help:ts=2
+```
 
 
 
-jim_xfce4_help.txt                                       25  SEP 2021
-
-DO NOT DELETE
 
 
-====
-*jim_xfce4_help*  (hot links point to here)
-USAGE:     :h jim_xfce4_help  " Opens this file as read-only HELP file
-
-HELPTAGS and Ctags are NOT related (do not confuse).
-
-For helptags:
-MUST use *.txt
-MUST put in /doc folder of a plugin, here:  jimHelp/
-
-To change file:  edit this file as regular file.
-Dislike Highighting?   :set syntax=off
-Add a tag:     surround new tag with * ; plus prose to describe tag
-Add a hotlink:   ONLY in same file (I think) surround new tag with |
-
-Run :helptags ALL to regenerate file called tags
-/doc file (singular) :  should see this .txt file and tags file
-
-restart vim
-:h jim_xfce4_help
-====
-
-Tags in this file:
-
-|jim_xfce4_help| (link) to tag at top
-
-To remove highlighting:   set syntax=off
+# XFCE4
 
 
-#### xfce4
 Shortcuts: https://docs.xfce.org/apps/terminal/start#keyboard_shortcuts
 HELP:   https://docs.xfce.org/apps/terminal/4.12/start
 
@@ -883,111 +896,9 @@ Based on VTE Widget terminal (gnome uses)
 ALT-F10  toggle bet min/max (NOPE!)
 
 ALT-TAB  rotate through open windows?
-:
-
-#### ====================
-##  Sat  11 Sep 2021
-(N) !!date, insert date
-
-:resize -3 <CR>  " reduce size of window
-:vertical resize -3 <CR>
 
 
-
-#### $VIMRUNTIME (inside the image app)
-:!ls $VIMRUNTIME
-#### Windows, splits
-:h usr_07.txt
-:h usr_08.txt
-:h windows.txt
-:h CTRL-W    
-
-
-#### statusline  %m (modify?) %y (filetype) ...
-:h statusline
-:echo expand("%m")  
-:set statusline=%t
-:set statusline+=%{&ff}
-
-#### Ranges (in file)
-:h range
-:., 'a
-:., +2
-3 lines below to end - 5 lines
-:.+3, $-5
-
-#### insert mode
-:h insert.txt
-:h insert-index
-:h i_CTRL-R
-
-<C-R>% inserts file name:
-/home/jim/docs/misc_files/005_tech_notes.md
-
-<C-R>=system("ls")  inserts listing
-
-
-Insert in bulk:
-:i or :a  followed by . when done
-
-
-#### Registers
-:echo @a 
-:let @a="hello"
-
-
-#### Plugins
-:h Vimux
-:call VimuxRunCommand("ls")
-:VimuxPromptCommand<CR>
-
-To Close:
-:VimuxCloseRunner<CR>
-
-
-#### Syntax Highlighting
-:h usr_06.txt
-
-#### vim initialize
-:vert h nvim_R
-:tab help
-
-
-#### vim help
-:vert h nvim-R  " opens help to right
-:let R_nvimpager = "vertical" default, (can be "tab", "tabnew")
-
-
-#### vim tabs
-tabs   :tabn :tabp :tabnew
-
-READ: cmds to open windows at various localations:  bo, above ...
-
-
-:h reference_toc
-:h help
-:h help-summary
-:h cmd   (:h ls)
-:helpgrep fold*  (no quotes)
-
-"all tags
-:h quickref.txt 
-
-"index
-:h usr_toc.txt
-
-:h reference_toc
-:h local-additions
-
-:h motions.txt (jumps, motions, find next } etc)
-
-
-#### search
-    /foo/+1    find foo  and move +1 line down 
-/foo/0     find .... but move to beginning of line 
-/foo/e-1    find ... then move back 1 character.
-
-
+```
 ##  Thu  19 Nov 2020  Acer Batttery
   *  ACER CB3-431-C7EX 
   *  From back (tiny print on labels)
@@ -997,8 +908,10 @@ READ: cmds to open windows at various localations:  bo, above ...
 Do you sell new battery for this ACER laptop?
 CB3-431-C7EX  (manuf 3/22/18)
 SNID:  81201450072
+```
 
 ## REST RESTful
+```
 *	originally URL linked to file or webpage.
 *	more recenty, URI links to payload,  HTML/JSON/XML
 *	RESTFUL provides stateless operations, architecture (vs SOAP, or others)
@@ -1013,7 +926,11 @@ independent.  Examples include HTTP, IP, REST.   But TCP is not stateless.
 -	Goodreader for pdf ($20?) - many say best iPad reader.?
 - Marvin - no pdf support, but excellent otherwise?
 
+```
 
+# KNITR
+
+```
 **knitr -> R & rmarkdown -> Bookdown (~2016) -> Blogdown -> netlify (Hugo, static)**
 HUGO:   md -> html
 BOOKDOWN:  Rmd        ->html (skips md)
@@ -1027,7 +944,10 @@ snapshots as either your code or the any of like libraries changes.   Nice
 purpose:   easily re-create complete environment.   But much too much overhead
 for my needs!  (at this time.)
 
-#### X11
+```
+
+#  X11
+```
 -	XFCE - many distros, suite of apps, use GTK+ toolkit
 -	-	DESKTOP Mgr=Xfdesktop (colors, images, wallpaper)
 -	-	FILE Mgr=Thunar (GTK+ toolkit)
@@ -1055,28 +975,4 @@ for my needs!  (at this time.)
 -	TERMINALS
 	-	rxvt, urxvt, terminator, st (not friendly) xfce4-terminal.
 
-
-##  Fri  15 Oct 2021
-HOW DO ALLOCATE LEARNING TIME:
-
-There is an abundance of ways to learn all things R and related:  books, videos, post questions, read
-stack overflow,  `google` or just code.
-
-I am curious how you allocate your time between the various resources (consciously
-or unconsciously)
-
-I am not looking for any advice.  We all learn differently.   
-
-I'll start (again this is to LEARN): 
-
-40-50% of coding, ( often NOT productive. ) 
-
-20% books/videos ( usually very productive)
-20% stackoverflow | slack R4DS | blogs; ( mixed efficiency )
-10% googling; ( relatively low efficiency. ) 
-
-<5% posting questions (mixed)
-<1% Thinking, ( highly productive, but I am lazy )
-
-
-
+```
